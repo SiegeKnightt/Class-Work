@@ -1,0 +1,13 @@
+Employee
+Reeves Farrell
+123 Circle Place
+reevesfarrell@me.com
+13013137
+Professor
+Car
+Honda
+CRV
+2017
+123ABC
+Regular
+12.1

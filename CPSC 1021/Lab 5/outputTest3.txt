@@ -1,0 +1,14 @@
+Pass Purchased: Student
+Name: Reeves Farrell
+Address: 123 Circle Place
+Email: reevesfarrell@me.com
+Student ID: C13013137
+Class Standing: 4
+Vehicle Type: LEV
+Make: Tesla
+Model: Model 3
+Year: 2021
+Lisence Plate: 123ABC
+Charge Time: 4.5
+Gallons: 12.1
+Total: $188.40

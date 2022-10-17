@@ -1,0 +1,13 @@
+Student
+Reeves Farrell
+123 Circle Place
+reevesfarrell@me.com
+C13013137
+4
+Car
+Honda
+CRV
+2017
+123ABC
+Regular
+12.1

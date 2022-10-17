@@ -1,0 +1,13 @@
+Student
+Reeves Farrell
+123 Circle Place
+reevesfarrell@me.com
+C13013137
+4
+LEV
+Tesla
+Model 3
+2021
+123ABC
+4.5
+12.1
