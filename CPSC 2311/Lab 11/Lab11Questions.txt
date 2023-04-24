@@ -1,0 +1,86 @@
+/**************************
+*Reeves Farrell
+*CPSC 2310 Spring 23
+*UserName: jrfarre@clemson.edu
+*Instructor:  Dr. Yvon Feaster
+*************************/
+
+CPSC 2310 Spring 23
+Lab 11 Questions
+
+1. As discussed in the lab writeup, the locations for min and max are 
+	-8(%rbq) and -4(%rbq), which are 4 apart. How far apart would these
+	addresses be if min and max were chars instead of ints? Why?
+	What if they were doubles? 
+	(You can test this)
+	
+	If we were using chars, they would be 1 apart because chars are 1 byte while ints are
+	4 bytes. Doubles would be 8 apart as opposed to 4 because doubles are 8 bytes.
+
+
+2. Alter the values assigned to min and max in the driver.s file
+	| min | max | result
+	=======================
+	| 0   | 10  | 0 1 2 3 4 5 6 7 8 9 10
+	| 5   | 10  | 0 1 2 3 4 5 6 7 8 9 10
+	| 10  | 0   | 0 
+	| -5  | 1   | 0 1
+
+3. What are these lines doing in driver.s?
+
+	movl  -8(%rbp), %eax # min, tmp89
+   	movl  %eax, -12(%rbp)   # tmp89, i
+
+	The first line is moves the minimum value into the register %eax.
+	The second line takes the value tmp89 from the last line and stores it in i.
+	Essentially, both lines use tmp89 to store the value of min into i.
+
+
+4. What happens when you change the jump conditional to jl instead of jle?
+	What if you change it to jg? Why?
+	
+	If you change jl to jle, you will be going from jump if less than to jump if less than
+	or equal to. This means the condition will chnage if the value is equal. Changing it to
+	jg will make it jump if greater than, again altering the condition needed to be met.
+
+
+5. The last line in .L3 handles the for loop change (i++)
+   The third line in .L2  handles the for loop conditional (i < max)
+(The first two lines in .L2 handle the initialization, but we won't alter that)
+	
+Fill in the resulting loop and print out when we change the x86 commands 
+(*some of these create infinite loops so testing directly may take awhile, 
+try to logic through it first. If there is an infinite loop, write "infinite
+loop" as the printout)
+
+	.L3         | .L2  |        for loop             |    printout
+===========================================================================
+addl  $1, -12(%rbp) | jle  | for(i = min; i <= max; i++) | 0 1 3 4....10
+subl  $1, -12(%rbp) | jle  | for(i = min; i <= max; i++) | infinite loop
+addl  $2, -12(%rbp) | jl   | for(i = min; i <= max; i++) | 0 2 4 6 8
+mull  $2, -12(%rbp) | jge  | for(i = min; i <= max; i++) | doesn't compile
+addl  $1, -8(%rbp)  | jle  | for(i = min; i <= max; i++) | infinite loop of zeros
+
+
+6. lsl r4, r3, #2 is the same as r4 = 4 * r3. Explain
+
+	The value of r3 is left shifted by two bits, therefore it is multiplied by 4.
+	The result is then stored within r4.
+
+
+   ldr r5, [r0, r4] is the same as r5 = arr[i] in this case. How does this work
+
+   r0 is our base register to access an array and r4 is the offset register.
+   Based on the previous line, r4 is basically 4 * i in the array. Therefore,
+   we are able to access the position of i in the array and store it in r5.
+
+
+
+7. In the beginning of a function in ARM, we push lr onto the stack. At the
+   end, we pop that value into pc. Why is this important? What does it 
+   accomplish?	
+
+   The return address for this function is stored in the link register. This is placed
+   onto the stack when the function is called. Popping that value into the
+   program counter stores the address of the subroutine after it has run. It allows
+   the computer to save the function for later if it needs to be called again.
