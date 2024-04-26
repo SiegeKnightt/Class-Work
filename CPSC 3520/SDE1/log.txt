@@ -1,0 +1,143 @@
+Warning: c:/users/siege/my drive/classes/cpsc 3520/sde1/sde1.family.pro:193:
+Warning:    Singleton variables: [Ancestor1,Gen1,Ancestor2,Gen2]
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- parent(Parent, mark_smith).
+Parent = tom_smith .
+
+?- parent(Parent, martha_smith).
+Parent = mark_smith .
+
+?- parent(Parent, layla_morris).
+Parent = beau_morris .
+
+?- parent(beau_morris, Child).
+Child = layla_morris .
+
+?- parent(Parent, tom_louis).
+Parent = jonathan_louis .
+
+?- married(Husband, marsha_lang).
+Husband = jonathan_louis .
+
+?- married(jonathan_louis, Wife).
+Wife = marsha_lang .
+
+?- married(jonathan_louis, marsha_lang).
+true .
+
+?- married(jonathan_louis, constance_may).
+false.
+
+?- married(leonard_thompson, Wife).
+Wife = lisa_smith .
+
+?- ancestor(arthur_leech, Person).
+Person = timothy_leech .
+
+?- ancestor(Ancestor, timothy_leech).
+Ancestor = arthur_leech .
+
+?- least_common_ancestor(mark_smith, julie_smith, Ancestor).
+Ancestor = fred_smith .
+
+?- least_common_ancestor(julie_smith, Person2, fred_smith).
+Person2 = tom_smith .
+
+?- least_common_ancestor(tom_smith, Person2, fred_smith).
+Person2 = lisa_smith .
+
+?- least_common_ancestor(lisa_smith, tom_smith, Ancestor).
+Ancestor = fred_smith .
+
+?- least_common_ancestor(julie_smith, tom_smith, fred_smith).
+true .
+
+?- blood(julie_smith, leslie_smith).
+true .
+
+?- blood(julie_smith, susan_holt).
+false.
+
+?- blood(julie_smith, mary_snyder).
+false.
+
+?- blood(julie_smith, jack_leech).
+true .
+
+?- sibling(evelyn_harris, Person2).
+Person2 = albert_harris .
+
+?- sibling(leonard_thompson, Person2).
+Person2 = mary_thompson .
+
+?- sibling(leonard_thompson, evelyn_harris).
+false.
+
+?- sibling(leonard_thompson, mary_thompson).
+true .
+
+?- father(arthur_leech, Child).
+Child = timothy_leech .
+
+?- father(Father, arthur_leech).
+Father = jeremiah_leech .
+
+?- mother(mother, arthur_leech).
+false.
+
+?- mother(Mother, arthur_leech).
+Mother = sally_swithers .
+
+?- mother(julia_swift, Child).
+Child = evelyn_harris .
+
+?- uncle(Uncle, lilly_thompson).
+Uncle = john_thompson .
+
+?- aunt(Aunt, lilly_thompson).
+Aunt = catherine_thompson .
+
+?- uncle(freddy_smith, Person).
+Person = martha_smith .
+
+?- cousin(mark_smith, Person2).
+Person2 = julie_smith .
+
+?- cousin(jill_smith, Person2).
+Person2 = martha_smith .
+
+?- cousin(mark_smith, jill_smith).
+false.
+
+?- cousin(mark_smith, martha_smith).
+false.
+
+?- cousin(Cousin, mark_smith).
+Cousin = julie_smith .
+
+?- cousin(julie_smith, mark_smith).
+true .
+
+?- cousin(martha_smith, jill_smith).
+true .
+
+?- cousin_type(martha_smith, jill_smith, CousinType, Removed).
+CousinType = '2nd cousin',
+Removed = 2 
+
+Unknown action: \ (h for help)
+Action? .
+
+?- cousin_type(mark_smith, julie_smith, CousinType, Removed).
+CousinType = '1st cousin',
+Removed = 1 .
+
+?- cousin_type(mark_smith, joe_thompson, CousinType, Removed).
+CousinType = '1st cousin',
+Removed = 1 .

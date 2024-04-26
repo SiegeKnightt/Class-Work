@@ -1,0 +1,48 @@
+(*Reeves Farrell*)
+(*SDE2*)
+
+(*DONE*)
+(* Function to find the first duplicate in an integer list *)
+let rec first_duplicate first =
+  match first with
+  | [] -> -10000
+  | head :: tail -> if List.mem head tail then head else first_duplicate tail
+
+(*DONE*)
+(* Function to find the first non-repeating element in an integer list *)
+let rec first_nonrepeating first =
+  let rec count x = function
+    | [] -> 0
+    | head :: tail -> (if head = x then 1 else 0) + count x tail
+  in
+
+  let rec nonrepeating = function
+    | [] -> -10000
+    | head :: tail -> if count head first = 1 then head else nonrepeating tail
+  in
+
+  nonrepeating first
+
+(*DONE*)
+(* Function to check if there exists an integer in list a that can be added to an integer in list b to get v *)
+let rec sumOfTwo (a, b, v) =
+  match a with
+  | [] -> false
+  | x :: xs ->
+    if List.mem (v - x) b then
+      true
+    else
+      sumOfTwo (xs, b, v)
+
+(*DONE*)
+(* Function to return all possible pairs of lengths that add up to n *)
+let rec cyk_sublists n =
+  match n with
+  | n when n <= 1 -> []
+  | _ ->
+    let rec pairs m acc =
+      match m with
+      | m when m < 1 -> acc
+      | _ -> pairs (m - 1) ((m, n - m) :: acc)
+    in
+    pairs (n - 1) []
