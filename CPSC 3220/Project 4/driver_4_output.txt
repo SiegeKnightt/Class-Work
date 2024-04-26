@@ -1,0 +1,66 @@
+-- directory listing --
+  fd =  1: a, currently closed, 512 bytes in size
+           FAT: 4 5 8 10
+  fd =  2: b, currently closed, 512 bytes in size
+           FAT: 6 7 9 11
+  fd =  3: this entry and the following entries are unused
+-- end --
+read 8 bytes [aaaaaaaa] from file c
+-- directory listing --
+  fd =  1: a, currently closed, 512 bytes in size
+           FAT: 4 5 8 10
+  fd =  2: b, currently closed, 512 bytes in size
+           FAT: 6 7 9 11
+  fd =  3: c, currently closed, 512 bytes in size
+           FAT: 12 13 14 15
+  fd =  4: d, currently closed, 256 bytes in size
+           FAT: 16 17
+  fd =  5: this entry and the following entries are unused
+-- end --
+-- directory listing --
+  fd =  1: a, currently closed, 256 bytes in size
+           FAT: 4 5
+  fd =  2: b, currently closed, 512 bytes in size
+           FAT: 6 7 9 11
+  fd =  3: c, currently closed, 512 bytes in size
+           FAT: 12 13 14 15
+  fd =  4: d, currently closed, 256 bytes in size
+           FAT: 16 17
+  fd =  5: this entry and the following entries are unused
+-- end --
+-- file alllocation table listing of used blocks --
+  block   4 is used and points to   5
+  block   5 is used and points to   1
+  block   6 is used and points to   7
+  block   7 is used and points to   9
+  block   9 is used and points to  11
+  block  11 is used and points to   1
+  block  12 is used and points to  13
+  block  13 is used and points to  14
+  block  14 is used and points to  15
+  block  15 is used and points to   1
+  block  16 is used and points to  17
+  block  17 is used and points to   1
+-- end --
+read 8 bytes [dddddddd] from file a
+-- directory listing --
+  fd =  1: a, currently closed, 264 bytes in size
+           FAT: 4 5 8
+  fd =  2: unused
+  fd =  3: unused
+  fd =  4: d, currently closed, 256 bytes in size
+           FAT: 16 17
+  fd =  5: this entry and the following entries are unused
+-- end --
+-- directory listing --
+  fd =  1: a, currently closed, 264 bytes in size
+           FAT: 4 5 8
+  fd =  2: e, currently closed, 264 bytes in size
+           FAT: 6 7 9
+  fd =  3: f, currently closed, 264 bytes in size
+           FAT: 10 11 12
+  fd =  4: d, currently closed, 256 bytes in size
+           FAT: 16 17
+  fd =  5: this entry and the following entries are unused
+-- end --
+read 8 bytes [dddddddd] from file f

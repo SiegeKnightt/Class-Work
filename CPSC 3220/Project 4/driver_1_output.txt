@@ -1,0 +1,30 @@
+length of buffer1 is 64
+length of buffer2 is 43
+-- directory listing --
+  fd =  1: file.txt, currently open, 0 bytes in size
+           FAT: no blocks in use
+  fd =  2: my_file, currently open, 0 bytes in size
+           FAT: no blocks in use
+  fd =  3: this entry and the following entries are unused
+-- end --
+64 bytes written to first file
+43 bytes written to second file
+-- directory listing --
+  fd =  1: file.txt, currently closed, 64 bytes in size
+           FAT: 4
+  fd =  2: my_file, currently open, 43 bytes in size
+           FAT: 5
+  fd =  3: this entry and the following entries are unused
+-- end --
+-- file alllocation table listing of used blocks --
+  block   4 is used and points to   1
+  block   5 is used and points to   1
+-- end --
+reopen file.txt
+seek to 0 (rewind) in second file
+10 bytes read from first file
+[This is a ]
+10 more bytes read from first file
+[simple-min]
+10 bytes read from second file
+[And now fo]
