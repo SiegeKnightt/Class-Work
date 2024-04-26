@@ -1,0 +1,22 @@
+# Assignment 2 CPSC 4420
+# Author: Reeves Farrell
+# Due: SEP 26, 2023 @11:59 PM
+
+A. (1,1) -> (1,2) -> (1,3) -> (1,4) -> (2,4) -> (3,4)
+-> (4,4) -> (4,5) -> (5,5)
+
+C. It is similar. Instead of going down bottom,
+my program goes up and around the blocked space
+at (2,3) instead of going under it like I did.
+Both are valid routes as they only take 8 spaces
+to get to the goal state at (5,5).
+
+D. With this adjustment, the program takes the
+same route as it did in part C. It still does not
+take the lower path, instead electing to go above
+the blocked space at (2,3).
+
+E. With this adjustment, the program decides to go 
+below the blocked space at (2,3) like I did in part A.
+It seems to think going to the right is better than
+going up when the gamma is set to 0.1.

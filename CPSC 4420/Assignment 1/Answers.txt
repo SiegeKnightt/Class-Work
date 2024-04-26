@@ -1,0 +1,25 @@
+# Assignment 1 CPSC 4420/6420
+# Author: Reeves Farrell
+# Due: SEP 14, 2023 @04:59 PM
+# Written answers to some of the questions
+
+Part E:
+goal = ['0','1','2','3','4','5','6','7','8']
+start = ['3','1','2','0','7','5','4','6','8']
+
+For this specific starting state, there were a 
+total of 5 moves to solve the puzzle. The starting 
+state in the instructions was unsolveable.
+
+Part F:
+For the same start as part E, the DFS algorithm took
+many more moves to solve the puzzle. For a simpler start
+state, the DFS still took longer than the BFS. This is because
+BFS is good at finding the shortest path or closest node.
+DFS struggles with this a bit more.
+
+Part H:
+Both options use similar routes, however one is more efficient
+than the other. When the moves all have a unit cost, the total
+cost of the moves is 5. When the moves have different costs,
+it takes a total cost of 6 rather than 5.

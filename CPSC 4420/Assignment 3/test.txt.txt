@@ -1,0 +1,176 @@
+
+Problem 1:
+a) Here is the game tree showing O's possible moves and X's responses in Tic-Tac-Toe:
+
+
+        O 
+     /   |   \
+    /    |    \
+   X     X     X
+  / \   / \   / \
+ O   O O   O O   O
+b) Here is a partial game tree for the given chess position, showing White's possible moves and a sample of Black's responses:
+
+White:
+w1: WK:A1->A2
+S1: (WK:A2, WP:E3, WKn:B3, BK:A8, BP:F4, BB:C5)
+
+w2: WK:A1->B1
+S2: (WK:B1, WP:E3, WKn:B3, BK:A8, BP:F4, BB:C5)
+w3: WP:E3->E4
+S3: (WK:A1, WP:E4, WKn:B3, BK:A8, BP:F4, BB:C5)
+
+Black (sample responses to S1):
+b1: BK:A8->A7
+S11: (WK:A2, WP:E3, WKn:B3, BK:A7, BP:F4, BB:C5)
+b2: BB:C5->D4
+S12: (WK:A2, WP:E3, WKn:B3, BK:A8, BP:F4, BB:D4)
+
+c) State values:
+S1: White 9, Black 8
+S2: White 9, Black 8
+
+S3: White 10, Black 8
+
+White has a material advantage in S3 after moving the pawn. This assessment aligns with intuition since advancing the pawn provides greater control of the center.
+
+Problem 2:
+a) Min-Max:
+A chooses right child (2)
+B chooses left child (3)
+C chooses right child (6)
+B chooses left child (3)
+A chooses right child (2)
+
+Best move for A is right child, with value 2.
+
+b) Alpha-Beta Pruning:
+
+A: α = -∞, β = ∞
+
+A chooses right child (2)
+B: α = -∞, β = 2
+B prunes left child
+B chooses right child (3)
+C: α = -∞, β = 2
+C chooses right child (6)
+B: α = 2, β = ∞
+B prunes right child
+B chooses left child (3)
+A: α = 2, β = ∞
+A prunes right child
+A chooses left child (1)
+
+Best move for A is left child, with value 1. right child at A is pruned.
+
+c) With min nodes changed to EXP nodes:
+
+A chooses right child (2)
+B: EV = (3 + 6)/2 = 4.5
+
+B chooses right child (6)
+A chooses left child (1)
+
+Best move for A is left child, with value 1.
+
+Problem 3:
+a) Here is the decision tree for Player A:
+
+Copy code
+
+      A
+ /         \
+6-sided die   4-sided die + 1
+/          \
+p(1)*1         p(2)*2
+/        
+
+p(3)*3    p(4)*4
+
+b) Rolling the 6-sided die maximizes A's chance of winning on this turn.
+Expected value of 6-sided die = (p(1)*1 + p(2)*2 + p(3)3 + p(4)4 + p(5)5 + p(6)6)/6 = 3.5
+Expected value of 4-sided die + 1 = (1p(1) + 2p(2) + 3p(3) + 4p(4))/4 + 1 = 3
+3.5 > 3, so 6-sided maximizes chance of winning.
+
+c) Here is the decision tree for Player B:
+
+Copy code
+
+        B
+    /         \
+ 6-sided die   4-sided die + 1 
+            /           \
+       p(1)*1          p(2)*2
+       /        \
+    p(3)*3     p(4)*4
+d) For the 6-sided die, EV = 3.5. For the 4-sided die + 1, EV = 3.
+So Player B will choose the 6-sided die, with expected utility 3.5 for Player A.
+
+Problem 4:
+
+a) Working backwards:
+B nodes:
+B11: (5,3,7)
+
+B12: (6,2,5)
+B13: (5,3,6)
+B21: (5,4,6)
+B22: (4,3,8)
+B23: (6,3,4)
+
+B31: (5,4,6)
+B32: (5,5,5)
+B33: (6,2,7)
+
+A nodes:
+A1: 6
+A2: 5
+A3: 6
+
+b) Best starting move for A is A1 or A3, with value 6.
+
+c) For A1, best countermove for B is B12, with value 6.
+For A3, best countermove for B is B11 or B33, with value 5.
+
+d) For A1->B12: C chooses middle node (5,6,6).
+For A3->B11: C chooses first node (7,3,5).
+For A3->B33: C chooses last node (6,5,4).
+
+Problem 5:
+a) UCB values:
+A: 10/21 + 1sqrt(100/21) = 1.67
+B: 13/25 + 1sqrt(100/25) = 1.64
+
+C: 9/17 + 1sqrt(100/17) = 1.76
+D: 18/27 + 1sqrt(100/27) = 1.78
+E: 6/10 + 1*sqrt(100/10) = 2.49
+
+Node E has highest UCB, so it is selected with C = 1.
+
+b) With C = 10:
+A: 1.67
+
+B: 1.64
+C: 1.76
+D: 1.78
+E: 3.49
+
+Node E is still selected.
+
+c) Higher C favors exploration, while lower C favors exploitation. Very high C will explore nodes with few visits. Very low C will keep exploiting nodes with high value.
+
+d) Update values after 9 simulations:
+D: Visits: 27 + 9 = 36, Value: 18 + 1 - 3 = 16
+
+D1: Visits: 9, Value: 2
+D2: Visits: 9, Value: -1
+D3: Visits: 9, Value: -3
+Root: Visits: 100 + 9 = 109
+
+e) With C = 0.25:
+D: 16/36 + 0.25sqrt(109/36) = 1.56
+D1: 2/9 + 0.25sqrt(109/9) = 1.94
+D2: -1/9 + 0.25sqrt(109/9) = 1.06
+D3: -3/9 + 0.25sqrt(109/9) = 0.56
+
+D1 has highest UCB so it will likely be selected next. The simula ons showed D1 has greater value, so it will be explored more in future iterations.
