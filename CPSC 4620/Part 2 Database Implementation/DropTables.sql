@@ -1,0 +1,15 @@
+USE Pizzeria;
+
+DROP TABLE IF EXISTS ordertopping;
+DROP TABLE IF EXISTS topping;
+DROP TABLE IF EXISTS pizzadiscount;
+DROP TABLE IF EXISTS orderdiscount;
+DROP TABLE IF EXISTS dinein;
+DROP TABLE IF EXISTS pickup;
+DROP TABLE IF EXISTS delivery;
+DROP TABLE IF EXISTS pizzaorder;
+DROP TABLE IF EXISTS orderpizza;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS discount;
+DROP TABLE IF EXISTS basepizza;
+DROP SCHEMA IF EXISTS Pizzeria;
